@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     padding: 15,
     borderRadius: 24,
-    width: "50%",
+    width: "70%",
     textAlign: "center",
   },
   pressed: {

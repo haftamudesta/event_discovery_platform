@@ -10,8 +10,8 @@ export default function Home() {
       <Spacer height={24} />
       <Text style={styles.title}>The Number 1</Text>
       <Text>Reading List App</Text>
-      <Link href="/sign_in">Sign In Page</Link>
-      <Link href="/sign_up">Sign Up Page</Link>
+      <Link href="/(auth)/sign_in">Sign In Page</Link>
+      <Link href="/(auth)/sign_up">Sign Up Page</Link>
     </ThemedView>
   );
 }

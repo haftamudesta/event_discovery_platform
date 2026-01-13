@@ -116,7 +116,6 @@ const SignUp = () => {
 
   const handleSubmit = useCallback(async () => {
     Keyboard.dismiss();
-
     if (!validateForm()) {
       return;
     }
@@ -124,13 +123,14 @@ const SignUp = () => {
     try {
       setIsSubmitting(true);
       await signUp(formData.name, formData.email, formData.password);
-      router.replace({
-        pathname: "/sign_in",
-        params: {
-          message: "Account created successfully! Please sign in.",
-          email: formData.email,
-        },
-      });
+      router.replace("/(auth)/sign_in");
+      // router.replace({
+      //   pathname: "/sign_in",
+      //   params: {
+      //     message: "Account created successfully! Please sign in.",
+      //     email: formData.email,
+      //   },
+      // });
     } catch (error: any) {
       const errorMessage = getErrorMessage(error);
       setErrors((prev) => ({ ...prev, form: errorMessage }));
@@ -527,7 +527,7 @@ const SignUp = () => {
             <View style={styles.footer}>
               <ThemedText style={styles.footerText}>
                 Already have an account?{" "}
-                <Link href="/sign_in" style={styles.link} replace>
+                <Link href="/(auth)/sign_in" style={styles.link} replace>
                   Sign In
                 </Link>
               </ThemedText>
