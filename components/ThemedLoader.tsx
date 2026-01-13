@@ -1,23 +1,16 @@
 import { ActivityIndicator, useColorScheme } from "react-native";
 import { Colors } from "@/constants/colors";
 
-import ThemedView from "./Themedview";
+interface LoadingSpinnerProps {
+  size?: "small" | "large" | number;
+  color?: string;
+}
 
-const ThemedLoader = () => {
+const ThemedLoader = ({ size = "small", color }: LoadingSpinnerProps) => {
   const themeScheme = useColorScheme();
   const theme = themeScheme ? Colors[themeScheme] : Colors.light;
-  return (
-    <ThemedView
-      safe={false}
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <ActivityIndicator size="large" color={theme.text} />;
-    </ThemedView>
-  );
+
+  return <ActivityIndicator size={size} color={color || theme.text} />;
 };
 
 export default ThemedLoader;
