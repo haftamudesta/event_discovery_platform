@@ -1,34 +1,26 @@
 import { Stack } from "expo-router";
 import { StatusBar, useColorScheme } from "react-native";
 import { Colors } from "@/constants/colors";
-import { AuthProvider } from "@/contexts/UserContext";
+import { useAuth } from "@/hooks/useUser";
+import GuestOnly from "@/components/auth/GuestOnly";
 
 export default function AuthLayout() {
   const colorScheme = useColorScheme();
   const theme = colorScheme ? Colors[colorScheme] : Colors.light;
-
+  const { user } = useAuth();
+  console.log("current iser", user);
   return (
-    <AuthProvider>
+    <GuestOnly>
       <StatusBar
         barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
         backgroundColor={theme.background}
       />
       <Stack
         screenOptions={{
-          headerStyle: {
-            backgroundColor: theme.navBackground,
-          },
-          headerTintColor: theme.title,
+          headerShown: false,
+          animation: "none",
         }}
-      >
-        <Stack.Screen
-          name="(auth)"
-          options={{
-            headerShown: false,
-            animation: "none",
-          }}
-        />
-      </Stack>
-    </AuthProvider>
+      ></Stack>
+    </GuestOnly>
   );
 }

@@ -1,15 +1,36 @@
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
+import { Link } from "expo-router";
+import ThemedView from "@/components/Themedview";
+import Spacer from "@/components/Spacer";
 
-export default function Index() {
+export default function Home() {
+  console.log("index");
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+    <ThemedView safe={true} style={styles.container}>
+      <Spacer height={24} />
+      <Text style={styles.title}>The Number 1</Text>
+      <Text>Reading List App</Text>
+      <Link href="/sign_in">Sign In Page</Link>
+      <Link href="/sign_up">Sign Up Page</Link>
+    </ThemedView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  img: {
+    marginVertical: 20,
+  },
+  link: {
+    marginVertical: 10,
+    borderBottomWidth: 1,
+  },
+});
