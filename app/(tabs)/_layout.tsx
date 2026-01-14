@@ -3,6 +3,7 @@ import React from "react";
 import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/constants/colors";
+import GuestOnly from "@/components/auth/GuestOnly";
 
 const TabsLayout = () => {
   const themeScheme = useColorScheme();

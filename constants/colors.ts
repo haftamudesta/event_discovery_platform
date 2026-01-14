@@ -12,6 +12,9 @@ export const Colors = {
   // Accent
   accent: '#36D1DC', 
   accentLight: '#5EDFE9',
+  
+  
+   greeting: '#2D2B55', 
 
   // Background & Surface
   background: '#FFFFFF',

@@ -13,6 +13,7 @@ export default function Home() {
       <Link href="/(auth)/sign_in">Sign In Page</Link>
       <Link href="/(auth)/sign_up">Sign Up Page</Link>
       <Link href="/explore">Explore Page</Link>
+      <Link href="/home">Home Tab</Link>
     </ThemedView>
   );
 }
