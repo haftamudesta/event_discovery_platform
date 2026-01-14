@@ -12,6 +12,7 @@ export default function Home() {
       <Text>Reading List App</Text>
       <Link href="/(auth)/sign_in">Sign In Page</Link>
       <Link href="/(auth)/sign_up">Sign Up Page</Link>
+      <Link href="/explore">Explore Page</Link>
     </ThemedView>
   );
 }
