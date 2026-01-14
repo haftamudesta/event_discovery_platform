@@ -4,7 +4,7 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
-  ScrollView, // Add this import
+  ScrollView,
 } from "react-native";
 import { useRouter } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -20,7 +20,6 @@ import { Colors } from "@/constants/colors";
 const Home = () => {
   const router = useRouter();
   const { user } = useAuth();
-  console.log(user);
 
   const handleNavigateToProfile = () => {
     router.push("/profile");
@@ -72,7 +71,6 @@ const Home = () => {
             Find events that match your interests in the World
           </ThemedText>
         </View>
-        {/* Cards Section */}
         <View style={styles.cardsContainer}>
           <ThemedCard style={styles.card}>
             <ThemedText style={styles.cardTitle}>FEATURED EVENT</ThemedText>
@@ -118,7 +116,7 @@ const Home = () => {
             </ThemedText>
           </ThemedCard>
         </View>
-        <Spacer height={40} /> {/* Add some bottom padding */}
+        <Spacer height={40} />
       </ScrollView>
     </ThemedView>
   );
