@@ -4,6 +4,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import ThemedView from "@/components/Themedview";
 import ThemedText from "@/components/Themedtext";
+import ThemedCard from "@/components/ThemedCard";
 import Spacer from "@/components/Spacer";
 import image from "@/assets/img/images_dis.jpg";
 import { useAuth } from "@/hooks/useUser";
@@ -34,9 +35,8 @@ const Home = () => {
       </View>
       <View style={styles.welcom_wrapper}>
         <Ionicons name={"hand-left"} size={24} color={Colors.greeting} />
-        <Text style={styles.welcome}>Welcome {user?.name}</Text>
+        <Text style={styles.headings}>Welcome {user?.name}</Text>
       </View>
-
       <View style={styles.links_wrapper}>
         <TouchableOpacity
           onPress={handleNavigateToProfile}
@@ -61,6 +61,24 @@ const Home = () => {
           Find events that match your interests in the World
         </ThemedText>
       </View>
+      <ThemedCard>
+        <ThemedText style={styles.headings}>FEATURED EVENT</ThemedText>
+      </ThemedCard>
+      <ThemedCard>
+        <ThemedText style={styles.headings}>BROWSE CATEGORIES </ThemedText>
+      </ThemedCard>
+      <ThemedCard>
+        <ThemedText style={styles.headings}>UPCOMING THIS WEEK </ThemedText>
+      </ThemedCard>
+      <ThemedCard>
+        <ThemedText style={styles.headings}>TRENDING NOW </ThemedText>
+      </ThemedCard>
+      <ThemedCard>
+        <ThemedText style={styles.headings}>RECOMMENDED FOR YOU </ThemedText>
+      </ThemedCard>
+      <ThemedCard>
+        <ThemedText style={styles.headings}> QUICK ACTIONS </ThemedText>
+      </ThemedCard>
     </ThemedView>
   );
 };
@@ -84,7 +102,7 @@ const styles = StyleSheet.create({
     gap: 4,
     marginVertical: 8,
   },
-  welcome: {
+  headings: {
     color: Colors.greeting,
     fontWeight: "800",
     fontSize: 24,
