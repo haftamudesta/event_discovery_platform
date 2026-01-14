@@ -107,7 +107,7 @@ const SignIn = () => {
       <Spacer height={12} />
       <ThemedText>
         Don't have an account?Please{" "}
-        <Link href="/(auth)/sign_up" style={styles.link}>
+        <Link href="/sign_up" style={styles.link}>
           Register
         </Link>
       </ThemedText>
