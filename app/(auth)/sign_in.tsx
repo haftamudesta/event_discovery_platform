@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ThemedView from "@/components/Themedview";
 import ThemedText from "@/components/Themedtext";
 import Spacer from "@/components/Spacer";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import ThemedButton from "@/components/ThemedButton";
 import ThemedTextInput from "@/components/ThemedTextInput";
 import { useAuth } from "@/hooks/useUser";
@@ -16,6 +16,7 @@ const SignIn = () => {
   const { signIn } = useAuth();
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async () => {
     try {
@@ -35,6 +36,7 @@ const SignIn = () => {
       }
       setIsSubmitting(true);
       await signIn(email, password);
+      router.replace("/");
     } catch (error) {
       setError(`Error, Sign up failed. Please try again.`);
     } finally {
@@ -105,7 +107,7 @@ const SignIn = () => {
       <Spacer height={12} />
       <ThemedText>
         Don't have an account?Please{" "}
-        <Link href="/sign_up" style={styles.link}>
+        <Link href="/(auth)/sign_up" style={styles.link}>
           Register
         </Link>
       </ThemedText>
