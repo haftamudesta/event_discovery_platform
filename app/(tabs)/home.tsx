@@ -1,4 +1,11 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView, // Add this import
+} from "react-native";
 import { useRouter } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -23,62 +30,96 @@ const Home = () => {
   };
 
   return (
-    <ThemedView safe={true} style={{ paddingLeft: 4, paddingRight: 4 }}>
-      <Spacer height={40} />
-      <View style={styles.imageContainer}>
-        <Image
-          source={image}
-          style={styles.image}
-          accessibilityLabel="App Logo"
-          resizeMode="contain"
-        />
-      </View>
-      <View style={styles.welcom_wrapper}>
-        <Ionicons name={"hand-left"} size={24} color={Colors.greeting} />
-        <Text style={styles.headings}>Welcome {user?.name}</Text>
-      </View>
-      <View style={styles.links_wrapper}>
-        <TouchableOpacity
-          onPress={handleNavigateToProfile}
-          activeOpacity={0.7}
-          style={styles.linkButton}
-        >
-          <Text style={styles.links}>Navigate to your Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handleNavigateToMainPage}
-          activeOpacity={0.7}
-          style={styles.linkButton}
-        >
-          <Text style={styles.links}>Navigate to Main Page</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.introduction}>
-        <ThemedText style={styles.introText}>
-          📍Discover Amazing Events
-        </ThemedText>
-        <ThemedText style={styles.introText}>
-          Find events that match your interests in the World
-        </ThemedText>
-      </View>
-      <ThemedCard>
-        <ThemedText style={styles.headings}>FEATURED EVENT</ThemedText>
-      </ThemedCard>
-      <ThemedCard>
-        <ThemedText style={styles.headings}>BROWSE CATEGORIES </ThemedText>
-      </ThemedCard>
-      <ThemedCard>
-        <ThemedText style={styles.headings}>UPCOMING THIS WEEK </ThemedText>
-      </ThemedCard>
-      <ThemedCard>
-        <ThemedText style={styles.headings}>TRENDING NOW </ThemedText>
-      </ThemedCard>
-      <ThemedCard>
-        <ThemedText style={styles.headings}>RECOMMENDED FOR YOU </ThemedText>
-      </ThemedCard>
-      <ThemedCard>
-        <ThemedText style={styles.headings}> QUICK ACTIONS </ThemedText>
-      </ThemedCard>
+    <ThemedView safe={true} style={{ flex: 1 }}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingHorizontal: 4 }}
+      >
+        <Spacer height={40} />
+        <View style={styles.imageContainer}>
+          <Image
+            source={image}
+            style={styles.image}
+            accessibilityLabel="App Logo"
+            resizeMode="contain"
+          />
+        </View>
+        <View style={styles.welcom_wrapper}>
+          <Ionicons name={"hand-left"} size={24} color={Colors.greeting} />
+          <Text style={styles.headings}>Welcome {user?.name}</Text>
+        </View>
+        <View style={styles.links_wrapper}>
+          <TouchableOpacity
+            onPress={handleNavigateToProfile}
+            activeOpacity={0.7}
+            style={styles.linkButton}
+          >
+            <Text style={styles.links}>Navigate to your Profile</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={handleNavigateToMainPage}
+            activeOpacity={0.7}
+            style={styles.linkButton}
+          >
+            <Text style={styles.links}>Navigate to Main Page</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.introduction}>
+          <ThemedText style={styles.introText}>
+            📍Discover Amazing Events
+          </ThemedText>
+          <ThemedText style={styles.introText}>
+            Find events that match your interests in the World
+          </ThemedText>
+        </View>
+        {/* Cards Section */}
+        <View style={styles.cardsContainer}>
+          <ThemedCard style={styles.card}>
+            <ThemedText style={styles.cardTitle}>FEATURED EVENT</ThemedText>
+            <ThemedText style={styles.cardDescription}>
+              Check out today's highlight!
+            </ThemedText>
+          </ThemedCard>
+
+          <ThemedCard style={styles.card}>
+            <ThemedText style={styles.cardTitle}>BROWSE CATEGORIES</ThemedText>
+            <ThemedText style={styles.cardDescription}>
+              Music, Sports, Tech & more
+            </ThemedText>
+          </ThemedCard>
+
+          <ThemedCard style={styles.card}>
+            <ThemedText style={styles.cardTitle}>UPCOMING THIS WEEK</ThemedText>
+            <ThemedText style={styles.cardDescription}>
+              Don't miss these events
+            </ThemedText>
+          </ThemedCard>
+
+          <ThemedCard style={styles.card}>
+            <ThemedText style={styles.cardTitle}>TRENDING NOW</ThemedText>
+            <ThemedText style={styles.cardDescription}>
+              What everyone's talking about
+            </ThemedText>
+          </ThemedCard>
+
+          <ThemedCard style={styles.card}>
+            <ThemedText style={styles.cardTitle}>
+              RECOMMENDED FOR YOU
+            </ThemedText>
+            <ThemedText style={styles.cardDescription}>
+              Personalized just for you
+            </ThemedText>
+          </ThemedCard>
+
+          <ThemedCard style={styles.card}>
+            <ThemedText style={styles.cardTitle}>QUICK ACTIONS</ThemedText>
+            <ThemedText style={styles.cardDescription}>
+              Book, Save, Share
+            </ThemedText>
+          </ThemedCard>
+        </View>
+        <Spacer height={40} /> {/* Add some bottom padding */}
+      </ScrollView>
     </ThemedView>
   );
 };
@@ -100,7 +141,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     gap: 4,
-    marginVertical: 8,
+    marginVertical: 16,
   },
   headings: {
     color: Colors.greeting,
@@ -112,7 +153,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 12,
-    marginBottom: 16,
+    marginBottom: 24,
     gap: 16,
   },
   linkButton: {
@@ -129,9 +170,26 @@ const styles = StyleSheet.create({
   introduction: {
     gap: 8,
     marginTop: 16,
+    marginBottom: 24,
   },
   introText: {
     fontSize: 16,
+  },
+  cardsContainer: {
+    gap: 16,
+    marginTop: 8,
+  },
+  card: {
+    marginBottom: 8,
+  },
+  cardTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    marginBottom: 8,
+  },
+  cardDescription: {
+    fontSize: 14,
+    color: Colors.textSecondary,
   },
 });
 
