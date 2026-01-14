@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const Messages = () => {
+const Profile = () => {
   return (
     <View>
-      <Text>messages</Text>
+      <Text></Text>
     </View>
   );
 };
 
-export default Messages;
+export default Profile;

@@ -63,12 +63,12 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="notifications"
+        name="profile"
         options={{
-          title: "Notifications",
+          title: "Profile",
           tabBarIcon: ({ color, size, focused }) => (
             <Ionicons
-              name={focused ? "notifications" : "notifications-outline"}
+              name={focused ? "person" : "person-outline"}
               size={size}
               color={color}
             />
@@ -77,12 +77,12 @@ const TabsLayout = () => {
       />
 
       <Tabs.Screen
-        name="messages"
+        name="saved"
         options={{
-          title: "Messages",
+          title: "Saved",
           tabBarIcon: ({ color, size, focused }) => (
             <Ionicons
-              name={focused ? "chatbubbles" : "chatbubbles-outline"}
+              name={focused ? "bookmark" : "bookmark-outline"}
               size={size}
               color={color}
             />
