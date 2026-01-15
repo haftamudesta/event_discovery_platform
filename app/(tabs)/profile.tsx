@@ -14,29 +14,16 @@ import Spacer from "@/components/Spacer";
 import { useAuth } from "@/hooks/useUser";
 import ThemedText from "@/components/Themedtext";
 import { Colors } from "@/constants/colors";
-import { preDefinedInterests } from "@/constants/profile";
+import { preDefinedInterests } from "@/constants/interests";
 import Tag from "@/components/Tag";
 import ThemedButton from "@/components/ThemedButton";
-
-interface EventItem {
-  id: string;
-  title: string;
-}
+import { eventsData } from "@/constants/events";
 
 const EventCard = ({ title }: { title: string }) => (
   <View style={styles.eventCard}>
     <ThemedText style={styles.eventText}>{title}</ThemedText>
   </View>
 );
-
-const eventsData: EventItem[] = [
-  { id: "1", title: "Tech Conference" },
-  { id: "2", title: "Music Festival" },
-  { id: "3", title: "Gaming Tournament" },
-  { id: "4", title: "Sports Event" },
-  { id: "5", title: "Drama Play" },
-  { id: "6", title: "Art Exhibition" },
-];
 
 const Profile = () => {
   const { user } = useAuth();
