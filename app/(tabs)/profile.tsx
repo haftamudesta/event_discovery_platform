@@ -265,13 +265,13 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   section: {
-    marginBottom: 32,
+    marginBottom: -88,
   },
   sectionHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 16,
+    marginBottom: 12,
   },
   sectionTitle: {
     fontSize: 18,
@@ -293,11 +293,12 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     backgroundColor: Colors.sky[50],
     borderRadius: 12,
-    marginBottom: 16,
     justifyContent: "center",
     alignItems: "center",
     padding: 12,
     borderWidth: 1,
+    marginBottom: 12,
+    marginTop: 12,
     borderColor: Colors.gray[200],
     shadowColor: Colors.black,
     shadowOffset: {
@@ -316,12 +317,13 @@ const styles = StyleSheet.create({
   },
   interestsContent: {
     width: "100%",
+    marginBottom: 12,
   },
   interestsSubtitle: {
     fontSize: 16,
     fontWeight: "600",
     color: Colors.gray[800],
-    marginBottom: 4,
+    marginBottom: 12,
   },
   interestsDescription: {
     fontSize: 14,
