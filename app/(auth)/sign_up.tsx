@@ -516,9 +516,7 @@ const SignUp = () => {
                     </ThemedText>
                   </View>
                 ) : (
-                  <ThemedText style={styles.buttonText}>
-                    Create Account
-                  </ThemedText>
+                  <ThemedText>Create Account</ThemedText>
                 )}
               </ThemedButton>
             </ThemedView>
