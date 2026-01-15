@@ -15,6 +15,8 @@ export const Colors = {
   
   
    greeting: '#2D2B55', 
+   white:"#fff",
+   black:"#000000",
 
   // Background & Surface
   background: '#FFFFFF',
