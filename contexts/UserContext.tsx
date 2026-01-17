@@ -56,12 +56,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const mapToCustomUser = (appwriteUser: any): CustomUser => {
     return {
       $id: appwriteUser.$id,
+      id: appwriteUser.id || appwriteUser.$id,
       $createdAt: appwriteUser.$createdAt,
       $updatedAt: appwriteUser.$updatedAt,
       $collectionId: appwriteUser.$collectionId,
       $databaseId: appwriteUser.$databaseId,
       $permissions: appwriteUser.$permissions,
-      id: appwriteUser.id || appwriteUser.$id,
       name: appwriteUser.name,
       email: appwriteUser.email,
       password: appwriteUser.password || "",
@@ -98,8 +98,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         USERS_COLLECTION_ID,
         [Query.equal("$id", appwriteUserId)],
       );
-
-      console.log("User documents found:", response.documents.length);
 
       if (response.documents.length > 0) {
         return mapToCustomUser(response.documents[0]);
@@ -239,6 +237,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         acceptTerms: signupData.acceptTerms,
       });
 
+      // Validate required fields
       if (!signupData.email || !signupData.password || !signupData.name) {
         throw new Error("Missing required fields: email, password, or name");
       }
@@ -247,6 +246,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         throw new Error("You must accept the terms and conditions");
       }
 
+      // Create Appwrite account
       console.log("Creating Appwrite account...");
       await account.create(
         ID.unique(),
@@ -256,12 +256,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       );
       console.log("Appwrite account created");
 
+      // Create session
       console.log("Creating session...");
       await account.createEmailPasswordSession(
         signupData.email,
         signupData.password,
       );
 
+      // Get the created user
       const appwriteUser = await account.get();
       console.log("Appwrite user ID:", appwriteUser.$id);
 
