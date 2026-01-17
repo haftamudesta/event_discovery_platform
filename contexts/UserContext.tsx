@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { account } from "@/lib/appwrite";
 import { ID, Models } from "appwrite";
+// import { CustomUser, AuthUserType, SigninDto, SignupDto,UserRole} from "@/types/user";
 
 export type AuthUserType = Models.User<Models.Preferences> | null;
 
