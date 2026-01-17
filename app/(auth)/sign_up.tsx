@@ -133,12 +133,16 @@ const SignUp = () => {
         password: formData.password,
         confirmPassword: formData.confirmPassword,
         acceptTerms: formData.agreeToTerms,
-        // Add optional fields if you have them in your form
         phoneNumber: formData.phoneNumber || undefined,
         bio: formData.bio || undefined,
         role: UserRole.USER,
         interests: [],
       };
+      console.log("Calling signUp with:", {
+        email: signupDto.email,
+        name: signupDto.name,
+        passwordLength: signupDto.password.length,
+      });
 
       await signUp(signupDto);
       router.replace("/sign_in");
