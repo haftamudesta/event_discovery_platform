@@ -15,6 +15,7 @@ import {
   Platform,
   Alert,
 } from "react-native";
+
 import ThemedButton from "@/components/ThemedButton";
 import ThemedTextInput from "@/components/ThemedTextInput";
 import { useAuth } from "@/hooks/useUser";
@@ -22,12 +23,15 @@ import { Colors } from "@/constants/colors";
 import { Feather } from "@expo/vector-icons";
 import ThemedLogo from "@/components/ThemedLogo";
 import { validateEmail, validatePassword } from "@/utils/validation";
+import { SignupDto, UserRole } from "@/types/user";
 interface SignUpFormData {
   name: string;
   email: string;
   password: string;
   confirmPassword: string;
   agreeToTerms: boolean;
+  phoneNumber?: string;
+  bio?: string;
 }
 
 const SignUp = () => {
@@ -55,7 +59,7 @@ const SignUp = () => {
         setErrors((prev) => ({ ...prev, form: "" }));
       }
     },
-    [errors]
+    [errors],
   );
 
   const validateForm = useCallback((): boolean => {
@@ -122,8 +126,22 @@ const SignUp = () => {
 
     try {
       setIsSubmitting(true);
-      await signUp(formData.name, formData.email, formData.password);
-      router.replace("/(auth)/sign_in");
+
+      const signupDto: SignupDto = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        password: formData.password,
+        confirmPassword: formData.confirmPassword,
+        acceptTerms: formData.agreeToTerms,
+        // Add optional fields if you have them in your form
+        phoneNumber: formData.phoneNumber || undefined,
+        bio: formData.bio || undefined,
+        role: UserRole.USER,
+        interests: [],
+      };
+
+      await signUp(signupDto);
+      router.replace("/sign_in");
       // router.replace({
       //   pathname: "/sign_in",
       //   params: {
@@ -145,7 +163,7 @@ const SignUp = () => {
               style: "default",
               onPress: () => router.push("/sign_in"),
             },
-          ]
+          ],
         );
       }
     } finally {
@@ -173,12 +191,12 @@ const SignUp = () => {
         strength <= 1
           ? Colors.warning
           : strength <= 2
-          ? "#f59e0b"
-          : strength <= 3
-          ? "#3b82f6"
-          : strength <= 4
-          ? "#10b981"
-          : Colors.success,
+            ? "#f59e0b"
+            : strength <= 3
+              ? "#3b82f6"
+              : strength <= 4
+                ? "#10b981"
+                : Colors.success,
     }));
 
     let text = "";
