@@ -42,6 +42,8 @@ async function setupDatabase() {
       name: 'Users',
     });
 
+    
+
     console.log('Setup completed successfully!');
 
   } 
