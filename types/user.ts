@@ -52,33 +52,8 @@ export interface CustomUser {
   profilePicture?: ProfilePicture;
   interests: UserInterest[];
   role: UserRole;
-  createdAt: string; 
-  updatedAt: string; 
-  phoneNumber?: string;
-  bio?: string;
-  dateOfBirth?: string;
-  gender?: 'male' | 'female' | 'non-binary' | 'prefer-not-to-say';
-  isEmailVerified: boolean;
-  isActive: boolean;
   lastLoginAt?: string;
   loginCount: number;
-  socialProfiles?: {
-    google?: string;
-    facebook?: string;
-    twitter?: string;
-    github?: string;
-    linkedin?: string;
-  };
-  preferences?: {
-    emailNotifications?: boolean;
-    pushNotifications?: boolean;
-    privacy?: {
-      profileVisibility?: 'public' | 'private' | 'friends-only';
-      showEmail?: boolean;
-      showLocation?: boolean;
-    };
-    language?: string;
-  };
   stats?: {
     eventsCount?: number;
     savedEventsCount?: number;
@@ -100,7 +75,6 @@ export interface CreateUserDto {
   phoneNumber?: string;
   bio?: string;
   dateOfBirth?: string;
-  gender?: CustomUser['gender'];
 }
 export interface UpdateUserDto {
   name?: string;
@@ -112,8 +86,6 @@ export interface UpdateUserDto {
   bio?: string;
   website?: string;
   dateOfBirth?: string;
-  gender?: CustomUser['gender'];
-  preferences?: CustomUser['preferences'];
 }
 
 export interface SigninDto {

@@ -104,6 +104,8 @@ async function setupDatabase() {
     });
 
     console.log('Table created with columns:', table.$id);
+    
+
     console.log('Setup completed successfully!');
 
   } catch (error: any) {
