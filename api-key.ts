@@ -35,3 +35,8 @@ async function testApiKey(): Promise<boolean> {
 }
 
 testApiKey().catch(console.error);
+
+// Load .env from the parent directory ES modules
+// const envPath = path.join(__dirname, '..', '.env');
+// console.log('Loading .env from:', envPath);
+// dotenv.config({ path: envPath });
